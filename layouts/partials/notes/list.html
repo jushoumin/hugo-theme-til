@@ -3,7 +3,7 @@
     {{ range . }}
       <li>
         <article class="flex flex-row items-center">
-          <header class="grow">
+          <header class="overflow-x-auto  grow sm:overflow-x-visible">
             <h3>
               <a
                 href="{{ .RelPermalink }}"
@@ -14,18 +14,20 @@
             </h3>
           </header>
           {{ with .Page.GetTerms "categories" }}
-            <ul class="flex flex-row items-center justify-end space-x-2">
-              {{ range . }}
-                <li>
-                  <a
-                    href="{{ .RelPermalink }}"
-                    class="taxonomy"
-                    title="See notes on {{ .LinkTitle }}"
-                    >{{ .LinkTitle }}</a
-                  >
-                </li>
-              {{ end }}
-            </ul>
+            <div class="collapse  ml-2 overflow-x-auto  flex sm:max-w-50 sm:visible">
+              <ul class=" flex flex-row items-center justify-end space-x-2">  
+                {{ range . }}
+                  <li>
+                    <a
+                      href="{{ .RelPermalink }}"
+                      class="taxonomy"
+                      title="See notes on {{ .LinkTitle }}"
+                      >{{ .LinkTitle }}</a
+                    >
+                  </li>
+                {{ end }}
+              </ul>
+            </div>
           {{ end }}
         </article>
       </li>
